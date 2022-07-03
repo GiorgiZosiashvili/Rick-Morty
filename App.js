@@ -4,12 +4,10 @@ import HomeScreen from "./src/Screens/HomeScreen";
 import React, { useEffect, useState } from "react";
 import { useFonts } from "expo-font";
 const API = `https://rickandmortyapi.com/api/character/`;
-
 export default function App() {
   const [pageNumber, setPageNumber] = useState(1);
   const [fetchData, updateFetchData] = useState([]);
   const { results, info } = fetchData;
-
   const fetchDataHandler = async (search) => {
     const data = await fetch(API + `?page=${pageNumber}&name=${search} `).then(
       (res) => res.json()
