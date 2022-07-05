@@ -18,6 +18,7 @@ const HomeScreen = ({
           flexDirection: "row",
           justifyContent: "center",
           alignItems: "flex-end",
+          marginBottom: 5,
         }}
       >
         <Text
@@ -40,8 +41,12 @@ const HomeScreen = ({
           Morty
         </Text>
       </View>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView
+        style={{ width: "85%", alignSelf: "center" }}
+        showsVerticalScrollIndicator={false}
+      >
         <Search fetchDataHandler={fetchDataHandler} />
+
         <Cards results={results} />
         <Pagination pageNumber={pageNumber} setPageNumber={setPageNumber} />
       </ScrollView>
@@ -55,7 +60,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: 50,
-    alignItems: "center",
     flexDirection: "column",
     marginBottom: 20,
   },

@@ -18,6 +18,7 @@ const Search = ({ fetchDataHandler }) => {
         }}
         style={styles.input}
         placeholder="Search for Characters"
+        placeholderTextColor="#444444"
       />
       <TouchableOpacity
         onPress={() => fetchDataHandler(search)}
@@ -55,6 +56,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 10,
-    padding: 1,
+    padding: 2,
   },
 });

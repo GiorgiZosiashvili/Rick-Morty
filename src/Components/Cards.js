@@ -78,19 +78,16 @@ export default Cards;
 
 const styles = StyleSheet.create({
   container: {
-    alignSelf: "center",
-    width: 355,
     flex: 1,
     flexDirection: "row",
     borderRadius: 30,
     borderWidth: 2,
     borderColor: "#1c4966",
-    marginVertical: 5,
+    marginVertical: 8,
   },
   image: {
     width: 170,
     height: 150,
-    position: "relative",
     alignItems: "flex-end",
     borderTopStartRadius: 29,
     borderBottomStartRadius: 29,
