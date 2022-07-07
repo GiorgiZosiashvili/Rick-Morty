@@ -1,23 +1,9 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
-import HomeScreen from "./src/Screens/HomeScreen";
-import React, { useEffect, useState } from "react";
+import { NavigationContainer } from "@react-navigation/native";
 import { useFonts } from "expo-font";
-const API = `https://rickandmortyapi.com/api/character/`;
+import DrawerNavigator from "./src/DrawerNavigator/DrawerNavigator";
 export default function App() {
-  const [pageNumber, setPageNumber] = useState(1);
-  const [fetchData, updateFetchData] = useState([]);
-  const { results, info } = fetchData;
-  const fetchDataHandler = async (search) => {
-    const data = await fetch(API + `?page=${pageNumber}&name=${search} `).then(
-      (res) => res.json()
-    );
-    updateFetchData(data);
-  };
-  useEffect(() => {
-    fetchDataHandler("");
-  }, [pageNumber]);
-
   const [loaded] = useFonts({
     RickNMorty: require("./src/Assets/get_schwifty.ttf"),
   });
@@ -27,18 +13,10 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <HomeScreen
-        pageNumber={pageNumber}
-        setPageNumber={setPageNumber}
-        results={results}
-        fetchDataHandler={fetchDataHandler}
-      />
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <DrawerNavigator />
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "white" },
-});
+const styles = StyleSheet.create({});

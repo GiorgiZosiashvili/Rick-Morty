@@ -2,23 +2,23 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 
 const Pagination = ({ setPageNumber, pageNumber }) => {
-  const Next = () => {
+  const NextPage = () => {
     if (pageNumber === 42) return;
     setPageNumber((page) => page + 1);
   };
-  const Prev = () => {
+  const PrevPage = () => {
     if (pageNumber === 1) return;
     setPageNumber((page) => page - 1);
   };
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.touchableOpacity} onPress={Prev}>
+      <TouchableOpacity style={styles.touchableOpacity} onPress={PrevPage}>
         <Text style={styles.prevNextText}>Prev</Text>
       </TouchableOpacity>
       <View style={styles.touchableOpacity}>
         <Text style={styles.prevNextText}>{pageNumber}</Text>
       </View>
-      <TouchableOpacity style={styles.touchableOpacity} onPress={Next}>
+      <TouchableOpacity style={styles.touchableOpacity} onPress={NextPage}>
         <Text style={styles.prevNextText}>Next</Text>
       </TouchableOpacity>
     </View>
