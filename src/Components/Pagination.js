@@ -4,11 +4,11 @@ import React from "react";
 const Pagination = ({ setPageNumber, pageNumber }) => {
   const NextPage = () => {
     if (pageNumber === 42) return;
-    setPageNumber((page) => page + 1);
+    setPageNumber(pageNumber + 1);
   };
   const PrevPage = () => {
     if (pageNumber === 1) return;
-    setPageNumber((page) => page - 1);
+    setPageNumber(pageNumber - 1);
   };
   return (
     <View style={styles.container}>
@@ -16,7 +16,7 @@ const Pagination = ({ setPageNumber, pageNumber }) => {
         <Text style={styles.prevNextText}>Prev</Text>
       </TouchableOpacity>
       <View style={styles.touchableOpacity}>
-        <Text style={styles.prevNextText}>{pageNumber}</Text>
+        <Text style={styles.prevNextText}>Page: {pageNumber}</Text>
       </View>
       <TouchableOpacity style={styles.touchableOpacity} onPress={NextPage}>
         <Text style={styles.prevNextText}>Next</Text>
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   touchableOpacity: {
     alignItems: "center",
     justifyContent: "center",
-    width: 60,
+    paddingHorizontal: 5,
     height: 35,
     marginRight: 20,
     backgroundColor: "#3792cb",

@@ -8,6 +8,7 @@ import {
 import React from "react";
 import { useState, useEffect } from "react";
 import Cards from "../Components/Cards";
+import MainLogo from "../Components/MainLogo";
 
 const EpisodesScreen = () => {
   const [id, setId] = useState(1);
@@ -21,7 +22,6 @@ const EpisodesScreen = () => {
   };
   const [info, setInfo] = useState([]);
   const [results, setResults] = useState([]);
-  console.log([...Array(id).keys()]);
   const API = `https://rickandmortyapi.com/api/episode/${id}`;
 
   useEffect(() => {
@@ -43,42 +43,8 @@ const EpisodesScreen = () => {
         style={{ width: "90%", alignSelf: "center" }}
         showsVerticalScrollIndicator={false}
       >
+        <MainLogo />
         <View style={{ alignItems: "center" }}>
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "flex-end",
-            }}
-          >
-            <Text
-              style={{
-                fontSize: 35,
-                fontFamily: "RickNMorty",
-                color: "#83D2E4",
-              }}
-            >
-              Rick
-            </Text>
-            <Text
-              style={{
-                fontSize: 20,
-                fontFamily: "RickNMorty",
-                color: "darkgreen",
-              }}
-            >
-              and
-            </Text>
-            <Text
-              style={{
-                fontSize: 35,
-                fontFamily: "RickNMorty",
-                color: "#fdff10",
-              }}
-            >
-              Morty
-            </Text>
-          </View>
           <Text style={{ fontSize: 30, marginTop: 5 }}>
             Episode:{" "}
             <Text style={{ color: "#3792cb" }}>
@@ -93,7 +59,7 @@ const EpisodesScreen = () => {
               <Text style={styles.prevNextText}>Prev</Text>
             </TouchableOpacity>
             <View style={styles.touchableOpacity}>
-              <Text style={styles.prevNextText}>{id}</Text>
+              <Text style={styles.prevNextText}>Page: {id}</Text>
             </View>
             <TouchableOpacity
               onPress={NextEpisode}
@@ -117,14 +83,14 @@ export default EpisodesScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 50,
     flexDirection: "column",
     marginBottom: 20,
+    backgroundColor: "white",
   },
   touchableOpacity: {
     alignItems: "center",
     justifyContent: "center",
-    width: 60,
+    paddingHorizontal: 5,
     height: 35,
     marginRight: 20,
     backgroundColor: "#3792cb",

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, ImageBackground } from "react-native";
+import { StyleSheet, Text, View, ImageBackground } from "react-native";
 import React, { useState } from "react";
 
 const Cards = ({ results }) => {
@@ -67,8 +67,22 @@ const Cards = ({ results }) => {
     });
   } else {
     return (
-      <View>
-        <Text>Nothing was returned</Text>
+      <View style={{ marginTop: 10 }}>
+        <ImageBackground
+          style={{ marginTop: 60, width: "100%", height: 440 }}
+          source={require("../Assets/Images/middleFingers.png")}
+        >
+          <Text
+            style={{
+              top: -30,
+              fontSize: 30,
+              fontFamily: "RickNMorty",
+              alignSelf: "center",
+            }}
+          >
+            Wubba Lubba dub-dub!
+          </Text>
+        </ImageBackground>
       </View>
     );
   }

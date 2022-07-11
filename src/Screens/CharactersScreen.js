@@ -1,15 +1,18 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import { useState, useEffect } from "react";
 import Cards from "../Components/Cards";
-
 import Pagination from "../Components/Pagination";
 import Search from "../Components/Search";
+import MainLogo from "../Components/MainLogo";
 const API = `https://rickandmortyapi.com/api/character/`;
 
 const CharactersScreen = ({}) => {
   const [pageNumber, setPageNumber] = useState(1);
   const [fetchData, updateFetchData] = useState([]);
   const { results, info } = fetchData;
+  const refresh = () => {
+    setPageNumber(1);
+  };
   const fetchDataHandler = async (search) => {
     const data = await fetch(API + `?page=${pageNumber}&name=${search} `).then(
       (res) => res.json()
@@ -25,36 +28,10 @@ const CharactersScreen = ({}) => {
         style={{ width: "90%", alignSelf: "center" }}
         showsVerticalScrollIndicator={false}
       >
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "flex-end",
-          }}
-        >
-          <Text
-            style={{ fontSize: 35, fontFamily: "RickNMorty", color: "#83D2E4" }}
-          >
-            Rick
-          </Text>
-          <Text
-            style={{
-              fontSize: 20,
-              fontFamily: "RickNMorty",
-              color: "darkgreen",
-            }}
-          >
-            and
-          </Text>
-          <Text
-            style={{ fontSize: 35, fontFamily: "RickNMorty", color: "#fdff10" }}
-          >
-            Morty
-          </Text>
-        </View>
+        <MainLogo refresh={refresh} />
         <Search fetchDataHandler={fetchDataHandler} />
-        <Cards results={results} />
         <Pagination pageNumber={pageNumber} setPageNumber={setPageNumber} />
+        <Cards results={results} />
       </ScrollView>
     </View>
   );
@@ -65,8 +42,8 @@ export default CharactersScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 50,
     flexDirection: "column",
     marginBottom: 20,
+    backgroundColor: "white",
   },
 });
